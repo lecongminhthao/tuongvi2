@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng 8/3</title>
+    <style>
+        body {
+            background-color: pink;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 182, 193, 0.9);
+            box-shadow: 0 0 20px white;
+        }
+        h1 {
+            font-size: 24px;
+            color: white;
+            text-shadow: 0 0 10px white;
+        }
+        .message-box {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        button {
+            background: hotpink;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: deeppink;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chúc mừng ngày 8/3, mèo iu của mìnhhhhhhhhhhhhhhh!</h1>
+        <img src="test.png" alt="Mèo iu" width="200">
+        <div class="message-box">
+            <p id="message">Nụ cười của cậu thắp sáng nên thế giới của buồn bã của tớ</p>
+            <button onclick="nextMessage()">Next Message</button>
+        </div>
+    </div>
+    
+    <script>
+        const messages = [
+            "Nụ cười của cậu thắp sáng nên thế giới buồn bã của tớ",
+            "Cậu là món quà tuyệt vời nhất tớ từng có",
+            "Mỗi ngày có cậu là một ngày hạnh phúc",
+            "Tớ luôn ở đây, yêu thương và trân trọng cậu"
+        ];
+        let index = 0;
+
+        function nextMessage() {
+            index = (index + 1) % messages.length;
+            document.getElementById("message").innerText = messages[index];
+        }
+        
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
